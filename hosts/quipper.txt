@@ -1,0 +1,17 @@
+api.quipper.com
+campus-client.quipper.com
+campus-partners.quipper.com
+campus.quipper.com
+collaborate.quipper.com
+devs.quipper.com
+essays-learn.quipper.com
+essays-link.quipper.com
+learn.quipper.com
+link.quipper.com
+math.quipper.com
+media.quipper.com
+mediacdn.quipper.com
+subscribe.quipper.com
+video-cdn.quipper.com
+quipper.com
+learn.quipper.com

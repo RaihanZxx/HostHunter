@@ -1,0 +1,12 @@
+zoom.us
+app.zoom.us
+gomarketplacefront-cf.zoom.us
+gomarketplacecontent-cf.zoom.us
+zoom.com
+ade.zoom.com
+int-optimizely.zoom.com
+library.zoom.com
+preview.zoom.com
+stage-optimizely.zoom.com
+trust.zoom.com
+support.zoom.com
