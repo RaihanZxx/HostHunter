@@ -1,0 +1,6 @@
+api.quipper.com
+campus-partners.quipper.com
+campus.quipper.com
+essays-learn.quipper.com
+essays-link.quipper.com
+learn.quipper.com
