@@ -24,7 +24,7 @@ HostHunter is a Python-based CLI tool designed to check host connectivity, resol
 
 **Scan Host From File (batch):**
 
-<img src="https://github.com/RaihanZxx/HostHunter/blob/main/data/previews/previews2.jpg" width="400">
+<img src="https://github.com/RaihanZxx/HostHunter/blob/main/data/previews/previes2.jpg" width="400">
 
 ---
 
