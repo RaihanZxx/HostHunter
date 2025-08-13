@@ -1,3 +1,20 @@
+Metadata-Version: 2.4
+Name: HostHunter
+Version: 1.0.0
+Summary: A host checking tool
+Author-email: HanSoBoren <raihanzxzy@gmail.com>
+License-Expression: MIT
+Requires-Python: <4.0,>=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: requests==2.32.4
+Requires-Dist: websocket-client==1.8.0
+Requires-Dist: rich==14.1.0
+Requires-Dist: pytest==8.4.1
+Requires-Dist: ruff==0.12.8
+Requires-Dist: black==25.1.0
+Dynamic: license-file
+
 # HostHunter 🕵️‍♂️
 
 **A powerful tool for host checking and quota bug exploration**
@@ -14,17 +31,17 @@ HostHunter is a Python-based CLI tool designed to check host connectivity, resol
 
 ## 🖼️ Previews
 
-**Main Menu:**
+**Scan Host From File (batch):**
 
-<img src="https://github.com/RaihanZxx/HostHunter/blob/main/data/previews%previews.jpg" width="400">
+<img src="https://github.com/RaihanZxx/HostHunter/blob/main/data/previews%2FIMG_20250526_122834_765.jpg" width="400">
 
 **Show Response Time Chart:**
 
-<img src="https://github.com/RaihanZxx/HostHunter/blob/main/data/previews%previews1.jpg" width="400">
+<img src="https://github.com/RaihanZxx/HostHunter/blob/main/data/previews%2FIMG_20250526_122834_584.jpg" width="400">
 
-**Scan Host From File (batch):**
+**Check Ping:**
 
-<img src="https://github.com/RaihanZxx/HostHunter/blob/main/data/previews%previews2.jpg" width="400">
+<img src="https://github.com/RaihanZxx/HostHunter/blob/main/data/previews%2FIMG_20250526_122833_950.jpg" width="400">
 
 ---
 

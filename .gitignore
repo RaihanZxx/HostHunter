@@ -5,8 +5,10 @@ __pycache__/
 *.pyd
 .Python
 env/
+.venv/
 venv/
 ENV/
+output/logs/
 
 # IDE and Editor Files
 .vscode/
