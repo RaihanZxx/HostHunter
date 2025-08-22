@@ -16,15 +16,15 @@ HostHunter is a Python-based CLI tool designed to check host connectivity, resol
 
 **Main Menu:**
 
-<img src="https://github.com/RaihanZxx/HostHunter/blob/main/data/previews%previews.jpg" width="400">
+<img src="https://github.com/RaihanZxx/HostHunter/blob/main/data/previews/previews.jpg" width="400">
 
 **Show Response Time Chart:**
 
-<img src="https://github.com/RaihanZxx/HostHunter/blob/main/data/previews%previews1.jpg" width="400">
+<img src="https://github.com/RaihanZxx/HostHunter/blob/main/data/previews/previews1.jpg" width="400">
 
 **Scan Host From File (batch):**
 
-<img src="https://github.com/RaihanZxx/HostHunter/blob/main/data/previews%previews2.jpg" width="400">
+<img src="https://github.com/RaihanZxx/HostHunter/blob/main/data/previews/previes2.jpg" width="400">
 
 ---
 
