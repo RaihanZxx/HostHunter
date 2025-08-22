@@ -1,5 +1,7 @@
 # HostHunter 🕵️‍♂️
 
+**Version: Genesis-2.0.1**
+
 **A powerful tool for host checking and quota bug exploration**
 
 ![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
