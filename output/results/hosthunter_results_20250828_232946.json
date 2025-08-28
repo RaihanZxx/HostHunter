@@ -1,0 +1,54 @@
+[
+    {
+        "color": "red",
+        "raw_message": "[Error] ruangguru.con (IP: N/A) failed to resolve."
+    },
+    {
+        "color": "spring_green2",
+        "raw_message": "[Ping OK] ruangguru.com (IP: 172.66.152.99) latency: 0.326 ms"
+    },
+    {
+        "color": "green",
+        "raw_message": "[200 OK] dukungcoc.ruangguru.com (IP: 43.174.229.73, Port: 443, Response: 539.05 ms) is active!\n[200 OK] dukungcoc.ruangguru.com (IP: 43.174.227.65, Port: 443, Response: 836.46 ms) is active!"
+    },
+    {
+        "color": "yellow",
+        "raw_message": "[Redirect] liga.ruangguru.com (IP: 104.20.28.42, Port: 443, Response: 635.23 ms) may be usable.\n[Redirect] liga.ruangguru.com (IP: 172.66.152.99, Port: 443, Response: 949.70 ms) may be usable."
+    },
+    {
+        "color": "green",
+        "raw_message": "[200 OK] career.ruangguru.com (IP: 172.66.152.99, Port: 443, Response: 907.60 ms) is active!\n[200 OK] career.ruangguru.com (IP: 104.20.28.42, Port: 443, Response: 2465.14 ms) is active!"
+    },
+    {
+        "color": "green",
+        "raw_message": "[200 OK] app.ruangguru.com (IP: 43.174.229.73, Port: 443, Response: 688.21 ms) is active!\n[200 OK] app.ruangguru.com (IP: 43.174.227.65, Port: 443, Response: 794.32 ms) is active!"
+    },
+    {
+        "color": "green",
+        "raw_message": "[200 OK] roboguru.ruangguru.com (IP: 172.66.152.99, Port: 443, Response: 483.48 ms) is active!\n[200 OK] roboguru.ruangguru.com (IP: 104.20.28.42, Port: 443, Response: 2551.95 ms) is active!"
+    },
+    {
+        "color": "green",
+        "raw_message": "[200 OK] bayar.ruangguru.com (IP: 172.66.152.99, Port: 443, Response: 619.43 ms) is active!\n[200 OK] bayar.ruangguru.com (IP: 104.20.28.42, Port: 443, Response: 1690.29 ms) is active!"
+    },
+    {
+        "color": "green",
+        "raw_message": "[200 OK] rea.ruangguru.com (IP: 104.20.28.42, Port: 443, Response: 655.21 ms) is active!\n[200 OK] rea.ruangguru.com (IP: 172.66.152.99, Port: 443, Response: 906.38 ms) is active!"
+    },
+    {
+        "color": "green",
+        "raw_message": "[200 OK] roboguru-ui.ruangguru.com (IP: 172.66.152.99, Port: 443, Response: 888.82 ms) is active!\n[Failed] roboguru-ui.ruangguru.com (IP: 104.20.28.42, Port: 443) returned HTTP/2 503 "
+    },
+    {
+        "color": "green",
+        "raw_message": "[200 OK] roboguru.ruangguru.com (IP: 172.66.152.99, Port: 443, Response: 509.06 ms) is active!\n[200 OK] roboguru.ruangguru.com (IP: 104.20.28.42, Port: 443, Response: 747.11 ms) is active!"
+    },
+    {
+        "color": "green",
+        "raw_message": "[200 OK] studiokerja.ruangguru.com (IP: 172.66.152.99, Port: 443, Response: 724.90 ms) is active!\n[200 OK] studiokerja.ruangguru.com (IP: 104.20.28.42, Port: 443, Response: 992.91 ms) is active!"
+    },
+    {
+        "color": "green",
+        "raw_message": "[200 OK] studiokerja.ruangguru.com (IP: 172.66.152.99, Port: 443, Response: 603.62 ms) is active!\n[200 OK] studiokerja.ruangguru.com (IP: 104.20.28.42, Port: 443, Response: 1479.78 ms) is active!"
+    }
+]
