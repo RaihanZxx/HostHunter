@@ -166,7 +166,7 @@ Contributions are welcome! Please:
 
 For questions or feedback, reach out via GitHub Issues or contact the maintainer at:
 - [<img src="https://img.shields.io/badge/Telegram-%40HanSoBored-0088cc?style=flat-square&logo=telegram" alt="Telegram" height="20">](https://t.me/HanSoBored)
-- [<img src="https://img.shields.io/badge/Telegram-%40ChatGroup-0088cc?style=flat-square&logo=telegram" alt="Telegram" height="20">](https://t.me/MeetsWithMe)
+- [<img src="https://img.shields.io/badge/Telegram-%40ChatGroup-0088cc?style=flat-square&logo=telegram" alt="Telegram" height="20">](https://t.me/MetsWithMe)
 - <img src="https://img.shields.io/badge/Email-raihanzxzy%40gmail.com-d14836?style=flat-square&logo=gmail" alt="Email" height="20">
 
 ---
