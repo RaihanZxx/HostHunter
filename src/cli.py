@@ -182,6 +182,20 @@ def main_menu():
                             # Extend results with those from file scan
                             results.extend(scan_hosts_from_file(file_path, timeout, max_workers))
                     
+                    # Re-sort results by response time (fastest to slowest) after processing all files
+                    def extract_response_time(result):
+                        color, message = result
+                        import re
+                        # Look for response time in the message (after "Response: X.XX ms")
+                        match = re.search(r"Response: ([\d.]+) ms", message)
+                        if match:
+                            return float(match.group(1))
+                        else:
+                            # If no response time found (e.g. for error messages), assign a high value to sort them last
+                            return float('inf')
+
+                    results.sort(key=extract_response_time)
+                    
                     if results:
                         # Display results in a table
                         table = Table()
