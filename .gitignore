@@ -10,6 +10,18 @@ venv/
 ENV/
 output/logs/
 
+# Package build artifacts
+*.egg
+*.egg-info/
+dist/
+build/
+*.so
+
+# Output files and data directories
+output/results/
+data/previews/
+*.log
+
 # IDE and Editor Files
 .vscode/
 .idea/

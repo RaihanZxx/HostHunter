@@ -158,35 +158,75 @@ def main_menu():
 
         elif choice == "3":  # Scan Hosts from File
             file_name = Prompt.ask(
-                f"[{COLOR_PRIMARY}]Enter host file name in hosts folder (e.g., hosts.txt)[/]"
+                f"[{COLOR_PRIMARY}]Enter host file name in hosts folder (e.g., hosts.txt) or 'all' for all .txt files[/]",
+                default="all"
             )
-            # Construct absolute file path
-            file_path = os.path.join(config["Paths"]["hosts_dir"], file_name)
-            file_path = os.path.abspath(file_path)
-            if os.path.exists(file_path):
-                max_workers = int(config["General"]["max_concurrent_checks"])
-                with console.status(f"[{COLOR_PRIMARY}]Scanning hosts from {file_name}...", spinner="dots"):
-                    # Extend results with those from file scan
-                    results.extend(scan_hosts_from_file(file_path, timeout, max_workers))
-                if results:
-                    # Display results in a table
-                    table = Table()
-                    table.add_column("Host", style=COLOR_PRIMARY)
-                    table.add_column("Status", style=COLOR_SECONDARY)
-                    for color, message in results:
-                        # This parsing logic is fragile and should be improved for structured data
-                        # For now, keeping it as is to match existing behavior
-                        try:
-                            host_part = message.split("] ")[1].split(" ")[0]
-                            status_part = message.split("] ")[1]
-                            table.add_row(
-                                host_part, f"[{color}]{status_part}[/{color}]"
-                            )
-                        except IndexError:
-                            table.add_row("N/A", f"[{color}]{message}[/{color}]")
-                    console.print(table)
+            
+            if file_name.lower() == "all":
+                # List all .txt files in the hosts directory
+                hosts_dir = config["Paths"]["hosts_dir"]
+                txt_files = [f for f in os.listdir(hosts_dir) if f.lower().endswith('.txt')]
+                
+                if not txt_files:
+                    console.print(f"[{COLOR_ERROR}][Error] No .txt files found in {hosts_dir}![/]")
+                else:
+                    console.print(f"[{COLOR_PRIMARY}]Found {len(txt_files)} .txt files: {', '.join(txt_files)}[/]")
+                    max_workers = int(config["General"]["max_concurrent_checks"])
+                    
+                    for txt_file in txt_files:
+                        file_path = os.path.join(hosts_dir, txt_file)
+                        file_path = os.path.abspath(file_path)
+                        
+                        console.print(f"[{COLOR_PRIMARY}]Scanning hosts from {txt_file}...[/]")
+                        with console.status(f"[{COLOR_PRIMARY}]Scanning hosts from {txt_file}...", spinner="dots"):
+                            # Extend results with those from file scan
+                            results.extend(scan_hosts_from_file(file_path, timeout, max_workers))
+                    
+                    if results:
+                        # Display results in a table
+                        table = Table()
+                        table.add_column("Host", style=COLOR_PRIMARY)
+                        table.add_column("Status", style=COLOR_SECONDARY)
+                        for color, message in results:
+                            # This parsing logic is fragile and should be improved for structured data
+                            # For now, keeping it as is to match existing behavior
+                            try:
+                                host_part = message.split("] ")[1].split(" ")[0]
+                                status_part = message.split("] ")[1]
+                                table.add_row(
+                                    host_part, f"[{color}]{status_part}[/{color}]"
+                                )
+                            except IndexError:
+                                table.add_row("N/A", f"[{color}]{message}[/{color}]")
+                        console.print(table)
             else:
-                console.print(f"[{COLOR_ERROR}][Error] File {file_path} not found![/]")
+                # Construct absolute file path
+                file_path = os.path.join(config["Paths"]["hosts_dir"], file_name)
+                file_path = os.path.abspath(file_path)
+                if os.path.exists(file_path):
+                    max_workers = int(config["General"]["max_concurrent_checks"])
+                    with console.status(f"[{COLOR_PRIMARY}]Scanning hosts from {file_name}...", spinner="dots"):
+                        # Extend results with those from file scan
+                        results.extend(scan_hosts_from_file(file_path, timeout, max_workers))
+                    if results:
+                        # Display results in a table
+                        table = Table()
+                        table.add_column("Host", style=COLOR_PRIMARY)
+                        table.add_column("Status", style=COLOR_SECONDARY)
+                        for color, message in results:
+                            # This parsing logic is fragile and should be improved for structured data
+                            # For now, keeping it as is to match existing behavior
+                            try:
+                                host_part = message.split("] ")[1].split(" ")[0]
+                                status_part = message.split("] ")[1]
+                                table.add_row(
+                                    host_part, f"[{color}]{status_part}[/{color}]"
+                                )
+                            except IndexError:
+                                table.add_row("N/A", f"[{color}]{message}[/{color}]")
+                        console.print(table)
+                else:
+                    console.print(f"[{COLOR_ERROR}][Error] File {file_path} not found![/]")
 
         elif choice == "4":  # Save Results
             if results:

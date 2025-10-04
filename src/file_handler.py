@@ -74,6 +74,19 @@ def scan_hosts_from_file(file_path, timeout=10, max_workers=10):
                 logging.error(f"Host check failed during parallel scan: {str(e)}")
                 results.append(("red", f"[Error] Host check failed: {str(e)}"))
 
+    # Sort results by response time (fastest to slowest) - extract ms from message
+    def extract_response_time(result):
+        color, message = result
+        # Look for response time in the message (after "Response: X.XX ms")
+        match = re.search(r"Response: ([\d.]+) ms", message)
+        if match:
+            return float(match.group(1))
+        else:
+            # If no response time found (e.g. for error messages), assign a high value to sort them last
+            return float('inf')
+
+    results.sort(key=extract_response_time)
+
     return results
 
 
