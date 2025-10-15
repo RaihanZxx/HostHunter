@@ -161,32 +161,23 @@ def print_banner():
 
 def check_dependencies():
     """
-    Checks for the presence of required external command-line tools and Python libraries.
-
-    Verifies if 'dig', 'curl', and 'ping' are installed and accessible in the system's PATH.
-    Also includes a placeholder for checking Python library imports, though current
-    library imports are handled within their respective modules.
+    Check for required Python libraries (pure-Python implementation).
 
     Returns:
-        bool: True if all required dependencies are found, False otherwise.
+        bool: True if all required libraries are available, False otherwise.
     """
-    required_tools = ["dig", "curl", "ping"]
-    for tool in required_tools:
-        # Check if the command-line tool exists
-        if subprocess.run(["which", tool], capture_output=True).returncode != 0:
-            console.print(f"{COLOR_ERROR}[Error] {tool} is not installed!")
-            return False
     try:
-        # Placeholder for checking Python library imports.
-        # Currently, specific library imports are handled within their respective modules.
-        pass
+        import importlib
+
+        for lib in ("requests", "rich"):
+            importlib.import_module(lib)
+        return True
     except ImportError as e:
-        # Inform user about missing Python libraries
+        missing = str(e).split("'")[-2]
         console.print(
-            f"{COLOR_ERROR}[Error] Python library {str(e).split()[-1]} is not installed! Run 'pip install {str(e).split()[-1]}'"
+            f"{COLOR_ERROR}[Error] Python library {missing} is not installed! Run 'pip install {missing}'"
         )
         return False
-    return True
 
 
 def validate_host(host):
@@ -205,25 +196,37 @@ def validate_host(host):
     if not isinstance(host, str):
         return False
 
-    # Regex for domain names (more robust and commonly used)
-    domain_regex = r"^(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$"
-    # Regex for IPv4 addresses (e.g., 192.168.1.1, 255.255.255.0)
+    host = host.strip()
+    if not host:
+        return False
+    if len(host) > 253:
+        return False
+    # Reject obvious protocol/port/userinfo injections
+    if any(sep in host for sep in ("//", "/", "@", ":", "?", "#")):
+        return False
+    # Allow numeric IPv4 quickly
     ipv4_regex = r"^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"
-
-    logging.debug(f"Validating host: {host}, type: {type(host)}")
-
-    # Check for IP address first
     if re.match(ipv4_regex, host):
-        logging.debug(f"Host {host} matched IPv4 regex.")
         return True
 
-    # Then check for domain name
-    if re.match(domain_regex, host):
-        logging.debug(f"Host {host} matched domain regex.")
-        return True
-
-    logging.debug(f"Host {host} did not match any valid format.")
-    return False
+    # Only allow valid DNS label charset and length
+    if not re.fullmatch(r"[A-Za-z0-9.-]+", host):
+        return False
+    if host.startswith("-") or host.endswith("-") or host.startswith(".") or host.endswith("."):
+        return False
+    if ".." in host:
+        return False
+    labels = host.split(".")
+    if any(len(label) == 0 or len(label) > 63 for label in labels):
+        return False
+    # Each label must start and end with alnum; hyphens allowed in between
+    for label in labels:
+        if not re.match(r"^[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])$", label):
+            return False
+    # TLD should be alphabetic and at least 2 chars
+    if not re.match(r"^[A-Za-z]{2,}$", labels[-1]):
+        return False
+    return True
 
 
 def validate_uuid(uuid):
