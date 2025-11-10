@@ -63,10 +63,9 @@ def check_host(host, port=443, timeout=10):
     """
     Check the availability of a host on a specific port using requests.
 
-    For each resolved IP, attempt an HTTP HEAD request to that IP with the
-    Host header set to the original hostname. HTTPS certificate verification
-    is disabled when connecting directly to IPs to avoid SNI/hostname
-    mismatch errors during scanning.
+    For HTTPS (port 443), connects to the hostname to enable SNI and proper
+    certificate validation. For other ports, uses IP directly. Returns IP info
+    in the output for reference.
 
     Returns:
         tuple[str, str]: (color, message)
@@ -81,15 +80,17 @@ def check_host(host, port=443, timeout=10):
         try:
             start_time = time.time()
             scheme = "https" if port == 443 else "http"
-            url = f"{scheme}://{ip}:{port}"
-            headers = {"Host": host}
-            # Disable redirects to match previous behavior
+            # For HTTPS, use hostname to enable SNI; for HTTP, use IP
+            url_host = host if port == 443 else ip
+            url = f"{scheme}://{url_host}:{port}"
+            headers = {"Host": host} if port != 443 else {}
+            # Enable certificate verification for HTTPS to proper SSL/TLS validation
             resp = requests.head(
                 url,
                 headers=headers,
                 timeout=timeout,
                 allow_redirects=False,
-                verify=False if scheme == "https" else True,
+                verify=True,
             )
             response_time = (time.time() - start_time) * 1000
 
