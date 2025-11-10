@@ -1,6 +1,6 @@
 # HostHunter 🕵️‍♂️
 
-**Version: Genesis-1.0**
+**Version: 2.1 - Hunter**
 
 **A powerful tool for host checking and quota bug exploration**
 
